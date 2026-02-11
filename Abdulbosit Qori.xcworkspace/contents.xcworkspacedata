@@ -4,7 +4,4 @@
    <FileRef
       location = "group:Abdulbosit Qori.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:HapticFeedbackManager.swift">
-   </FileRef>
 </Workspace>

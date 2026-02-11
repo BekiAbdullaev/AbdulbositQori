@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		492D137B2F34F84100EF2A02 /* AZON_ALARM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 492D137A2F34F84100EF2A02 /* AZON_ALARM.wav */; };
 		49510CE82F33D4490009895A /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 49510CE72F33D4490009895A /* PanModal */; };
-		49510CEA2F343EF60009895A /* HapticFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49510CE92F343EF60009895A /* HapticFeedbackManager.swift */; };
 		496BDBBD2F30EE3A0099377E /* PrayerTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496BDBBC2F30EE3A0099377E /* PrayerTimeVC.swift */; };
 		496BDBBF2F30F26F0099377E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496BDBBE2F30F26F0099377E /* MainVC.swift */; };
 		49D4E4162F32598600CC14CF /* PrayerNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4E4152F32598600CC14CF /* PrayerNotificationManager.swift */; };
@@ -103,6 +102,7 @@
 		AEF4167529B201B400EEDED0 /* UICollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF4167429B201B400EEDED0 /* UICollectionCell.swift */; };
 		AEF4167929B202B400EEDED0 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF4167829B202B400EEDED0 /* String.swift */; };
 		AEF4167B29B21BCB00EEDED0 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF4167A29B21BCB00EEDED0 /* StackView.swift */; };
+		AEFBD2722F3C895E0032599E /* HapticFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFBD2712F3C895E0032599E /* HapticFeedbackManager.swift */; };
 		CD3E673A2AADE8490027E08C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CD3E67392AADE8490027E08C /* FirebaseFirestore */; };
 		CD3E673C2AADE8540027E08C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CD3E673B2AADE8540027E08C /* FirebaseStorage */; };
 		CD556BB82D3E8D3800DA36B6 /* MyLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = CD556BB72D3E8D3800DA36B6 /* MyLibrary */; };
@@ -142,7 +142,6 @@
 
 /* Begin PBXFileReference section */
 		492D137A2F34F84100EF2A02 /* AZON_ALARM.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AZON_ALARM.wav; sourceTree = "<group>"; };
-		49510CE92F343EF60009895A /* HapticFeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackManager.swift; sourceTree = "<group>"; };
 		496BDBBC2F30EE3A0099377E /* PrayerTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeVC.swift; sourceTree = "<group>"; };
 		496BDBBE2F30F26F0099377E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		49D4E4152F32598600CC14CF /* PrayerNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerNotificationManager.swift; sourceTree = "<group>"; };
@@ -238,6 +237,7 @@
 		AEF4167429B201B400EEDED0 /* UICollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionCell.swift; sourceTree = "<group>"; };
 		AEF4167829B202B400EEDED0 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		AEF4167A29B21BCB00EEDED0 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		AEFBD2712F3C895E0032599E /* HapticFeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackManager.swift; sourceTree = "<group>"; };
 		CD556BB62D3E899100DA36B6 /* MyLibrary */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MyLibrary; sourceTree = "<group>"; };
 		CD6408442A0101C40025F4FF /* TAKBIR.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TAKBIR.mp3; sourceTree = "<group>"; };
 		CD6408452A0101C40025F4FF /* sano_fotiha_asr.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sano_fotiha_asr.mp3; sourceTree = "<group>"; };
@@ -310,7 +310,6 @@
 				49D4E4152F32598600CC14CF /* PrayerNotificationManager.swift */,
 				49D4E4172F32598B00CC14CF /* BackgroundTaskManager.swift */,
 				49D4E4192F32598F00CC14CF /* LegacyBackgroundTaskManager.swift */,
-				49510CE92F343EF60009895A /* HapticFeedbackManager.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -678,6 +677,7 @@
 			isa = PBXGroup;
 			children = (
 				AE249B7E29E558AA00CE287B /* Sound */,
+				AEFBD2712F3C895E0032599E /* HapticFeedbackManager.swift */,
 				AEF19DFC29B1235500E789C5 /* AppDelegate.swift */,
 				AEF19E1129B1246000E789C5 /* ApplicationCoordinator.swift */,
 				CDB3E51D2A125EF6007961E1 /* CheckUpdate.swift */,
@@ -929,7 +929,7 @@
 				AE472FE829B30AAB00F77483 /* PagerTabStripError.swift in Sources */,
 				AE472FF729B30CCF00F77483 /* QuranBribesVC.swift in Sources */,
 				AE472FE629B30AAB00F77483 /* FXPageControl.m in Sources */,
-				49510CEA2F343EF60009895A /* HapticFeedbackManager.swift in Sources */,
+				AEFBD2722F3C895E0032599E /* HapticFeedbackManager.swift in Sources */,
 				AE14195929B4646D00A2AB1E /* PrayerInnerView.swift in Sources */,
 				AE472FEA29B30AAB00F77483 /* SegmentedPagerTabStripViewController.swift in Sources */,
 				AE249B7B29E5308C00CE287B /* PrayerTimeControlRootView.swift in Sources */,
