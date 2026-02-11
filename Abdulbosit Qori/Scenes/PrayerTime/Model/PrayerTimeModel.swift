@@ -8,12 +8,12 @@
 import Foundation
 
 struct PrayerTimeModel {
-    let prayerList = [PrayerTimeInnerModel(name: "Bomdod", state: .cilent),
-             PrayerTimeInnerModel(name: "Quyosh", state: .cilent),
-             PrayerTimeInnerModel(name: "Peshin", state: .cilent),
-             PrayerTimeInnerModel(name: "Asr", state: .cilent),
-             PrayerTimeInnerModel(name: "Shom", state: .cilent),
-             PrayerTimeInnerModel(name: "Xufton", state: .cilent)]
+    let prayerList = [PrayerTimeInnerModel(name: "Bomdod", state: .silent),
+             PrayerTimeInnerModel(name: "Quyosh", state: .silent),
+             PrayerTimeInnerModel(name: "Peshin", state: .silent),
+             PrayerTimeInnerModel(name: "Asr", state: .silent),
+             PrayerTimeInnerModel(name: "Shom", state: .silent),
+             PrayerTimeInnerModel(name: "Xufton", state: .silent)]
     var prayerSoundsList = [PrayerSoundControlModel(image: "ic_mute", name: "Eslatmasin", needPlay: false),
                             PrayerSoundControlModel(image: "ic_vibration", name: "Tovushsiz eslatsin", needPlay: false),
                             PrayerSoundControlModel(image: "ic_max_volume", name: "Azon", needPlay: true)]

@@ -68,7 +68,7 @@ class PrayerTimeControlRootView: NiblessView {
     @objc func azonBtnClicked(){
         self.isPlaying = !self.isPlaying
         self.tableView.reloadData()
-        self.azonClicked!()
+        self.azonClicked?()
     }
 }
     
@@ -107,15 +107,15 @@ extension PrayerTimeControlRootView:UITableViewDataSource, UITableViewDelegate{
         self.selectedIndex = indexPath.row
         switch indexPath.row {
         case 0:
-            self.OnClick!(.cilent)
+            self.OnClick?(.silent)
         case 1:
-            self.OnClick!(.vibration)
+            self.OnClick?(.vibration)
         case 2:
-            self.OnClick!(.sound)
+            self.OnClick?(.sound)
         default:
-            print("")
+            break
         }
-        let cell = tableView.cellForRow(at: indexPath) as! PrayerTimeControlCell
+        guard let cell = tableView.cellForRow(at: indexPath) as? PrayerTimeControlCell else { return }
         cell.viewBG.backgroundColor = UIColor(named: "bgMain")
         cell.btnVoice.setImage(UIImage(named: "ic_light_play"), for: .normal)
         cell.lblName.textColor = .white
@@ -124,7 +124,7 @@ extension PrayerTimeControlRootView:UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! PrayerTimeControlCell
+        guard let cell = tableView.cellForRow(at: indexPath) as? PrayerTimeControlCell else { return }
         cell.viewBG.backgroundColor = .clear
         cell.lblName.textColor = .black
         cell.btnVoice.tintColor = UIColor(named: "bgMain")

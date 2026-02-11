@@ -36,7 +36,7 @@ enum PrayerType: Int, CaseIterable {
 }
 
 enum PrayerTimeState: Int {
-    case cilent = 0
+    case silent = 0
     case vibration = 1
     case sound = 2
 }
@@ -74,7 +74,7 @@ class PrayerNotificationManager: NSObject, UNUserNotificationCenterDelegate {
             
             let prayerState = getPrayerState(for: prayerType)
             
-            if prayerState != .cilent {
+            if prayerState != .silent {
                 let prayerComponents = calendar.dateComponents([.hour, .minute], from: prayerTime)
                 var dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
                 dateComponents.hour = prayerComponents.hour
@@ -112,7 +112,7 @@ class PrayerNotificationManager: NSObject, UNUserNotificationCenterDelegate {
             content.sound = nil
             content.userInfo = ["vibrationMode": true]
             
-        case .cilent:
+        case .silent:
             return
         }
         
@@ -135,7 +135,7 @@ class PrayerNotificationManager: NSObject, UNUserNotificationCenterDelegate {
     // MARK: - Helper Methods
     private func getPrayerState(for prayerType: PrayerType) -> PrayerTimeState {
         let soundValue = userDefaults.string(forKey: "sound\(prayerType.rawValue)") ?? "0"
-        return PrayerTimeState(rawValue: Int(soundValue) ?? 0) ?? .cilent
+        return PrayerTimeState(rawValue: Int(soundValue) ?? 0) ?? .silent
     }
     
     private func getCustomSoundFileName() -> String? {

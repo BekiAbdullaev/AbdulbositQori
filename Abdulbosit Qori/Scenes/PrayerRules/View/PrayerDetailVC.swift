@@ -10,19 +10,19 @@ import UIKit
 import MyLibrary
 import AVFoundation
 
-class PrayerDetailVC: UIViewController,ViewSpecificController {
+class PrayerDetailVC: UIViewController, ViewSpecificController {
     // MARK: - RootView
     typealias RootView = PrayerDetailRootView
-    var tittle:String = ""
-    var section:Int = -1
-    var row:Int = -1
-    var isManRule:Bool = false
+    var prayerTitle: String = ""
+    var section: Int = -1
+    var row: Int = -1
+    var isManRule: Bool = false
     private var audioURL = ""
-    var player:AVAudioPlayer?
+    var player: AVAudioPlayer?
     var selectedIndex = -1
     var isPlaying = false
     
-    private var timer:Timer?
+    private var sliderTimer: Timer?
  
     override func loadView() {
         super.loadView()
@@ -34,8 +34,9 @@ class PrayerDetailVC: UIViewController,ViewSpecificController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = (isManRule ? PrayerRuleModel().prayerMenTypes[section] : PrayerRuleModel().prayerWomenTypes[section] ) + " - " + self.tittle
-        self.view().itemOnClick = { index in
+        self.title = (isManRule ? PrayerRuleModel().prayerMenTypes[section] : PrayerRuleModel().prayerWomenTypes[section] ) + " - " + self.prayerTitle
+        self.view().itemOnClick = { [weak self] index in
+            guard let self = self else { return }
             let popUp = PopUpView()
             switch (self.section, self.row) {
             case (0,0):
@@ -83,14 +84,15 @@ class PrayerDetailVC: UIViewController,ViewSpecificController {
             case (6,0):
                 popUp.title =  PrayerRuleModel().janozaNomozi[index].title
                 popUp.subtitle = PrayerRuleModel().janozaNomozi[index].detail
-            case (_, _):
-                print("")
+            default:
+                break
             }
             self.view.addSubview(popUp)
         }
         
         
-        self.view().audioOnClick = { index, audioKey in
+        self.view().audioOnClick = { [weak self] index, audioKey in
+            guard let self = self else { return }
             
             if self.selectedIndex == index {
                 if self.isPlaying {
@@ -110,107 +112,63 @@ class PrayerDetailVC: UIViewController,ViewSpecificController {
                 self.selectedIndex = index
                 self.player?.stop()
                 self.playAudio(index: index, fileURL: audioKey)
-//                for item in MainBean.shared.namazs {
-//                    if audioKey == item.key {
-//                        self.playAudio(index: index, fileURL: item.file_url ?? "")
-//                    }
-//                }
             }
             self.view().tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
         }
-        let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
+        
+        sliderTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if let player = player {
-            player.stop()
-        }
+        super.viewWillDisappear(animated)
+        player?.stop()
+        player = nil
+    }
+    
+    deinit {
+        sliderTimer?.invalidate()
+        sliderTimer = nil
+        player?.stop()
+        player = nil
     }
     
     @objc func updateSlider() {
-        if let player = player{
-            MainBean.shared.currentAudioValue = PrayerAudioModel(value:Float(player.currentTime), index: self.selectedIndex)
-
-            self.view().tableView.reloadRows(at: [IndexPath(row: self.selectedIndex, section: 0)], with: .none)
-            
-        }
+        guard let player = player, selectedIndex >= 0 else { return }
+        MainBean.shared.currentAudioValue = PrayerAudioModel(value: Float(player.currentTime), index: self.selectedIndex)
+        self.view().tableView.reloadRows(at: [IndexPath(row: self.selectedIndex, section: 0)], with: .none)
     }
     
-    func playAudio(index:Int, fileURL:String){
+    func playAudio(index: Int, fileURL: String) {
+        guard let url = Bundle.main.url(forResource: fileURL, withExtension: "mp3") else {
+            print("Audio fayl topilmadi: \(fileURL)")
+            return
+        }
         
-        let url = Bundle.main.url(forResource: fileURL, withExtension: "mp3")
         do {
-            player = try! AVAudioPlayer(contentsOf: url!)
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.delegate = self
+            player?.prepareToPlay()
             player?.play()
-            self.player?.delegate = self
             self.isPlaying = true
             self.view().isPlay = true
             MainBean.shared.maxAudioValue = PrayerAudioModel(value: Float(player?.duration ?? 0), index: self.selectedIndex)
+        } catch {
+            print("Audio ijro etishda xatolik: \(error.localizedDescription)")
+            player = nil
+            self.isPlaying = false
+            self.view().isPlay = false
         }
-        
-        
-//        if checkIsDownloaded(index: index, fileURL: fileURL) {
-//
-//            guard let desURL = URL(string: audioURL) else {return}
-//            do {
-//                player = try AVAudioPlayer(contentsOf: desURL)
-//                player?.prepareToPlay()
-//                player?.delegate = self
-//                player?.play()
-//                self.isPlaying = true
-//                self.view().isPlay = true
-//                MainBean.shared.maxAudioValue = PrayerAudioModel(value: Float(player?.duration ?? 0), index: self.selectedIndex)
-//            } catch _ {
-//                player = nil
-//            }
-//        } else {
-//            downloadFileAtIndex(index: index, fileURL: fileURL)
-//        }
     }
-    
-//    func checkIsDownloaded(index:Int, fileURL:String)->Bool {
-//        var downloaded = false
-//        if let audioUrl = URL(string: fileURL) {
-//            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//            let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
-//            audioURL = destinationUrl.absoluteString
-//            if FileManager.default.fileExists(atPath: destinationUrl.path) {
-//                downloaded = true
-//            }
-//        }
-//        return downloaded
-//    }
-//
-//    func downloadFileAtIndex(index:Int, fileURL:String){
-//
-//        if let audioUrl = URL(string: fileURL) {
-//            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//            let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent)
-//            print(destinationUrl)
-//            if FileManager.default.fileExists(atPath: destinationUrl.path) {
-//                print("The file already exists at path")
-//            } else {
-//                URLSession.shared.downloadTask(with: audioUrl) { location, response, error in
-//                    guard let location = location, error == nil else { return }
-//                    do {
-//                        try FileManager.default.moveItem(at: location, to: destinationUrl)
-//                        print("File moved to documents folder")
-//                        self.playAudio(index: index, fileURL: fileURL)
-//                    } catch {
-//                        print(error)
-//                    }
-//                }.resume()
-//            }
-//        }
-//    }
 }
 
-extension PrayerDetailVC:AVAudioPlayerDelegate {
+extension PrayerDetailVC: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        
         self.isPlaying = false
         self.view().isPlay = false
         MainBean.shared.currentAudioValue = PrayerAudioModel(value: 0.0, index: self.selectedIndex)
-        self.view().tableView.reloadRows(at: [IndexPath(row: self.selectedIndex, section: 0)], with: .none)
+        if selectedIndex >= 0 {
+            self.view().tableView.reloadRows(at: [IndexPath(row: self.selectedIndex, section: 0)], with: .none)
+        }
     }
 }
+

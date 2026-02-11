@@ -50,8 +50,8 @@ class MainVC:UIViewController,ViewSpecificController {
     }
     
     private func appearanceSettings() {
-        self.view().aboutOnClick = {
-            self.coordinator?.pushAbout()
+        self.view().aboutOnClick = { [weak self] in
+            self?.coordinator?.pushAbout()
         }
         self.view().ixResponder = self
         UIApplication.shared.isIdleTimerDisabled = true
@@ -62,13 +62,18 @@ class MainVC:UIViewController,ViewSpecificController {
         self.getMediaFiles()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
     
     func mainItemsDidSelect(type: MainPageItemType) {
         switch type {
         case .quran:
             self.coordinator?.pushToBribes()
         case .quranStudy:
-            self.coordinator?.pushToStydy()
+            self.coordinator?.pushToStudy()
         case .payerOrder:
             self.coordinator?.pushToPrayerRule()
         case .qibla:

@@ -46,17 +46,23 @@ class PrayerTimeControlVC:UIViewController,ViewSpecificController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if let player = player {
-            player.stop()
-        }
+        super.viewWillDisappear(animated)
+        player?.stop()
+        player = nil
+    }
+    
+    deinit {
+        player?.stop()
+        player = nil
     }
 
     private func appearanceSettings() {
         self.navigationItem.title = "Namoz vaqtini eslatish"
-        self.view().OnClick = { state in
-            self.delegate?.prayerSoundChanged(state: state)
+        self.view().OnClick = { [weak self] state in
+            self?.delegate?.prayerSoundChanged(state: state)
         }
-        self.view().azonClicked = {
+        self.view().azonClicked = { [weak self] in
+            guard let self = self else { return }
             if self.view().isPlaying {
                 self.playAzon()
             } else {
@@ -68,17 +74,21 @@ class PrayerTimeControlVC:UIViewController,ViewSpecificController {
         }
     }
     
-    func playAzon(){
-        let url = Bundle.main.url(forResource: "AZON", withExtension: "mp3")
+    func playAzon() {
+        guard let url = Bundle.main.url(forResource: "AZON", withExtension: "mp3") else {
+            return
+        }
         do {
-            player = try! AVAudioPlayer(contentsOf: url!)
+            player = try AVAudioPlayer(contentsOf: url)
             player?.play()
+        } catch {
+            print("Azon ijro etishda xatolik: \(error.localizedDescription)")
         }
     }
-    func stopAzon(){
-        if let player = player {
-            player.stop()
-        }
+    
+    func stopAzon() {
+        player?.stop()
+        player = nil
     }
 }
 

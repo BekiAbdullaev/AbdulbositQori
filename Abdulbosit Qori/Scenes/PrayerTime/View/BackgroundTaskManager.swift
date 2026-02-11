@@ -121,7 +121,7 @@ class BackgroundTaskManager {
     
     private func shouldVibrateForPrayer(_ prayerType: PrayerType) -> Bool {
         let soundValue = UserDefaults.standard.string(forKey: "sound\(prayerType.rawValue)") ?? "0"
-        let prayerState = PrayerTimeState(rawValue: Int(soundValue) ?? 0) ?? .cilent
+        let prayerState = PrayerTimeState(rawValue: Int(soundValue) ?? 0) ?? .silent
         return prayerState == .vibration
     }
     

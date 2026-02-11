@@ -33,21 +33,24 @@ class CheckUpdate: NSObject {
     }
   
 
-    private  func checkVersion(force: Bool) {
-        if let currentVersion = self.getBundle(key: "CFBundleShortVersionString") {
-            _ = getAppInfo { (info, error) in
-                if let appStoreAppVersion = info?.version {
-                    if let error = error {
-                        print("error getting app store version: ", error)
-                    } else if appStoreAppVersion <= currentVersion {
-                        print("Already on the last app version: ",currentVersion)
-                    } else {
-                        print("Needs update: AppStore Version: \(appStoreAppVersion) > Current version: ",currentVersion)
-                        DispatchQueue.main.async {
-                            let topController: UIViewController = (UIApplication.shared.windows.first?.rootViewController)!
-                            topController.showAppUpdateAlert(Version: (info?.version)!, Force: force, AppURL: (info?.trackViewUrl)!)
-                        }
-                    }
+    private func checkVersion(force: Bool) {
+        guard let currentVersion = self.getBundle(key: "CFBundleShortVersionString") else {
+            return
+        }
+        
+        _ = getAppInfo { (info, error) in
+            guard let appStoreAppVersion = info?.version else { return }
+            
+            if let error = error {
+                print("Error getting app store version: ", error)
+            } else if appStoreAppVersion <= currentVersion {
+                print("Already on the last app version: ", currentVersion)
+            } else {
+                print("Needs update: AppStore Version: \(appStoreAppVersion) > Current version: ", currentVersion)
+                DispatchQueue.main.async {
+                    guard let topController = self.getTopViewController() else { return }
+                    guard let version = info?.version, let appURL = info?.trackViewUrl else { return }
+                    topController.showAppUpdateAlert(Version: version, Force: force, AppURL: appURL)
                 }
             }
         }
@@ -55,11 +58,8 @@ class CheckUpdate: NSObject {
 
     private func getAppInfo(completion: @escaping (AppInfo?, Error?) -> Void) -> URLSessionDataTask? {
     
-      // You should pay attention on the country that your app is located, in my case I put Brazil */br/*
-      // Você deve prestar atenção em que país o app está disponível, no meu caso eu coloquei Brasil */br/*
-      
         guard let identifier = self.getBundle(key: "CFBundleIdentifier"),
-              let url = URL(string: "http://itunes.apple.com/br/lookup?bundleId=\(identifier)") else {
+              let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(identifier)") else {
                 DispatchQueue.main.async {
                     completion(nil, VersionError.invalidBundleInfo)
                 }
@@ -73,7 +73,6 @@ class CheckUpdate: NSObject {
                     guard let data = data else { throw VersionError.invalidResponse }
                     
                     let result = try JSONDecoder().decode(LookupResult.self, from: data)
-                    print(result.results)
                     guard let info = result.results.first else {
                         throw VersionError.invalidResponse
                     }
@@ -90,17 +89,25 @@ class CheckUpdate: NSObject {
     }
 
     func getBundle(key: String) -> String? {
-
-        guard let filePath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
-          fatalError("Couldn't find file 'Info.plist'.")
+        return Bundle.main.infoDictionary?[key] as? String
+    }
+    
+    private func getTopViewController() -> UIViewController? {
+        if #available(iOS 13.0, *) {
+            guard let windowScene = UIApplication.shared.connectedScenes
+                    .compactMap({ $0 as? UIWindowScene })
+                    .first,
+                  let rootVC = windowScene.windows.first?.rootViewController else {
+                return nil
+            }
+            var topController = rootVC
+            while let presentedVC = topController.presentedViewController {
+                topController = presentedVC
+            }
+            return topController
+        } else {
+            return UIApplication.shared.keyWindow?.rootViewController
         }
-        // 2 - Add the file to a dictionary
-        let plist = NSDictionary(contentsOfFile: filePath)
-        // Check if the variable on plist exists
-        guard let value = plist?.object(forKey: key) as? String else {
-          fatalError("Couldn't find key '\(key)' in 'Info.plist'.")
-        }
-        return value
     }
 }
 
@@ -120,13 +127,10 @@ extension UIViewController {
             guard let url = URL(string: AppURL) else {
                 return
             }
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         alertController.addAction(updateButton)
         self.present(alertController, animated: true, completion: nil)
     }
 }
+

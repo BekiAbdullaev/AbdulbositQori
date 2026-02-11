@@ -113,8 +113,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func checkNetworkAndSetupNotifications() {
-        // Test the actual server connectivity instead of just Google
+        #if DEBUG
         print("🔍 Checking network and server connectivity...")
+        #endif
         
         // Avval local ma'lumotlar mavjudligini tekshirish
         checkLocalPrayerData()
@@ -127,11 +128,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func checkLocalPrayerData() {
+        #if DEBUG
         let dataManager = DataManager.shared
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = AppConstants.DateFormats.dayMonthYear
         
-        // Umumiy ma'lumotlar sonini tekshirish
         let allPrayerData = dataManager.fetchAllNamazInfoCD()
         print("📊 Total prayer records in database: \(allPrayerData.count)")
         
@@ -176,6 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if oldRecordsCount > 0 {
             print("🗑️ Found \(oldRecordsCount) old prayer records (before today)")
         }
+        #endif
     }
     
     // MARK: - Application Lifecycle

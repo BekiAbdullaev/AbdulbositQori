@@ -241,7 +241,7 @@ extension PrayerTimeVC: PrayerTimeControlIxResponder{
     func prayerSoundChanged(state: PrayerTimeState) {
         
         switch state {
-        case .cilent:
+        case .silent:
             userDefaults.setValue(String(0), forKey: "sound\(selectedIndex-1)")
             self.view().tableView.reloadData()
         case .vibration:

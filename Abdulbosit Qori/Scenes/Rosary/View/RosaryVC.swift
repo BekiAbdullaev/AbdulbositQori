@@ -44,9 +44,15 @@ class RosaryVC:UIViewController,ViewSpecificController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     override func viewWillDisappear(_ animated: Bool) {
-        if let player = player {
-            player.stop()
-        }
+        super.viewWillDisappear(animated)
+        player?.stop()
+        player = nil
+    }
+    
+    deinit {
+        timer.invalidate()
+        player?.stop()
+        player = nil
     }
     
     private func appearanceSettings() {
@@ -98,12 +104,16 @@ class RosaryVC:UIViewController,ViewSpecificController {
         }
     }
     
-    func playTouch(){
-        let url = Bundle.main.url(forResource: "tasbeh_voice", withExtension: "mp3")
+    func playTouch() {
+        guard let url = Bundle.main.url(forResource: "tasbeh_voice", withExtension: "mp3") else {
+            return
+        }
         do {
-            player = try! AVAudioPlayer(contentsOf: url!)
+            player = try AVAudioPlayer(contentsOf: url)
             player?.play()
-        } 
+        } catch {
+            print("Audio ijro etishda xatolik: \(error.localizedDescription)")
+        }
     }
     
     func changeListCount() {

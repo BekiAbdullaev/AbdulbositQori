@@ -144,7 +144,7 @@ class HapticFeedbackManager {
         // Check if any prayer has vibration enabled
         return PrayerType.allCases.contains { prayer in
             let soundValue = UserDefaults.standard.string(forKey: "sound\(prayer.rawValue)") ?? "0"
-            let state = PrayerTimeState(rawValue: Int(soundValue) ?? 0) ?? .cilent
+            let state = PrayerTimeState(rawValue: Int(soundValue) ?? 0) ?? .silent
             return state == .vibration
         }
     }

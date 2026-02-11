@@ -40,10 +40,16 @@ final class MainCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
-    func pushToStydy() {
+    func pushToStudy() {
         let vc = QuranStudyVC()
         vc.coordinator = self
         self.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    /// Deprecated: typo tuzatildi, pushToStudy() ishlatilsin
+    @available(*, deprecated, renamed: "pushToStudy")
+    func pushToStydy() {
+        pushToStudy()
     }
     
     func pushToPrayerRule() {
@@ -54,7 +60,7 @@ final class MainCoordinator: Coordinator {
     
     func pushPrayerDetail(title:String, section:Int, row:Int ,isManRule:Bool){
         let vc = PrayerDetailVC()
-        vc.tittle = title
+        vc.prayerTitle = title
         vc.section = section
         vc.row = row
         vc.isManRule = isManRule
