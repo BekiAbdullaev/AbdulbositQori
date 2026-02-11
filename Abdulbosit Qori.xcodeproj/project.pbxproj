@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		492D137B2F34F84100EF2A02 /* AZON_ALARM.wav in Resources */ = {isa = PBXBuildFile; fileRef = 492D137A2F34F84100EF2A02 /* AZON_ALARM.wav */; };
-		49510CE82F33D4490009895A /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = 49510CE72F33D4490009895A /* PanModal */; };
+		49510CE82F33D4490009895A /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		496BDBBD2F30EE3A0099377E /* PrayerTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496BDBBC2F30EE3A0099377E /* PrayerTimeVC.swift */; };
 		496BDBBF2F30F26F0099377E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496BDBBE2F30F26F0099377E /* MainVC.swift */; };
 		49D4E4162F32598600CC14CF /* PrayerNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D4E4152F32598600CC14CF /* PrayerNotificationManager.swift */; };
@@ -78,6 +78,7 @@
 		AE947C8429C054970009331C /* SGSegmentedProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE947C8129C054970009331C /* SGSegmentedProgressView.swift */; };
 		AE947C8629C055570009331C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE947C8529C055570009331C /* Extensions.swift */; };
 		AECEE66F29EF16ED00FAE9C7 /* PrayerHederCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEE66E29EF16ED00FAE9C7 /* PrayerHederCell.swift */; };
+		AED6012B2F3D00B300806D74 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = AED6012A2F3D00B300806D74 /* PanModal */; };
 		AEDB2ED629DEA34E00063E0D /* RosaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDB2ED529DEA34E00063E0D /* RosaryCell.swift */; };
 		AEED7FC429B3C1C400AE9C11 /* PrayerDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEED7FC329B3C1C400AE9C11 /* PrayerDetailVC.swift */; };
 		AEED7FC629B3C1D200AE9C11 /* PrayerDetailRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEED7FC529B3C1D200AE9C11 /* PrayerDetailRootView.swift */; };
@@ -280,10 +281,11 @@
 			files = (
 				CD556BB82D3E8D3800DA36B6 /* MyLibrary in Frameworks */,
 				AE57453E29E03D1C00DBB88B /* SwiftEntryKit in Frameworks */,
-				49510CE82F33D4490009895A /* PanModal in Frameworks */,
+				49510CE82F33D4490009895A /* (null) in Frameworks */,
 				AEF19E2D29B12C0200E789C5 /* SnapKit in Frameworks */,
 				CD3E673A2AADE8490027E08C /* FirebaseFirestore in Frameworks */,
 				CD3E673C2AADE8540027E08C /* FirebaseStorage in Frameworks */,
+				AED6012B2F3D00B300806D74 /* PanModal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,7 +795,7 @@
 				CD3E67392AADE8490027E08C /* FirebaseFirestore */,
 				CD3E673B2AADE8540027E08C /* FirebaseStorage */,
 				CD556BB72D3E8D3800DA36B6 /* MyLibrary */,
-				49510CE72F33D4490009895A /* PanModal */,
+				AED6012A2F3D00B300806D74 /* PanModal */,
 			);
 			productName = "Abdulbosit Qori";
 			productReference = AEF19DF929B1235500E789C5 /* Abdulbosit Qori.app */;
@@ -828,7 +830,7 @@
 				AEF19E2B29B12C0200E789C5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				AE57453C29E03D1C00DBB88B /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				CD3E67382AADE62C0027E08C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				49510CE62F33D4490009895A /* XCLocalSwiftPackageReference "../../Desktop/exel/PanModal" */,
+				AED601292F3D00B300806D74 /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = AEF19DFA29B1235500E789C5 /* Products */;
 			projectDirPath = "";
@@ -1243,13 +1245,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		49510CE62F33D4490009895A /* XCLocalSwiftPackageReference "../../Desktop/exel/PanModal" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../Desktop/exel/PanModal;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		AE57453C29E03D1C00DBB88B /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1257,6 +1252,14 @@
 			requirement = {
 				kind = exactVersion;
 				version = 2.0.0;
+			};
+		};
+		AED601292F3D00B300806D74 /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.7;
 			};
 		};
 		AEF19E2B29B12C0200E789C5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1278,14 +1281,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		49510CE72F33D4490009895A /* PanModal */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PanModal;
-		};
 		AE57453D29E03D1C00DBB88B /* SwiftEntryKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AE57453C29E03D1C00DBB88B /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
 			productName = SwiftEntryKit;
+		};
+		AED6012A2F3D00B300806D74 /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AED601292F3D00B300806D74 /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
 		};
 		AEF19E2C29B12C0200E789C5 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

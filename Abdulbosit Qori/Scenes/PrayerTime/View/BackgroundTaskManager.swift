@@ -10,6 +10,7 @@ import BackgroundTasks
 import UIKit
 import MyLibrary
 
+
 @available(iOS 13.0, *)
 class BackgroundTaskManager {
     static let shared = BackgroundTaskManager()
@@ -127,7 +128,7 @@ class BackgroundTaskManager {
     
     private func triggerLongPrayerVibration(for prayerType: PrayerType) {
         let duration = defaultVibrationDuration(for: prayerType)
-        hapticManager.startPhoneCallLikeVibration(duration: duration)
+        //hapticManager.startPhoneCallLikeVibration(duration: duration)
         
         print("\(prayerType.displayName) prayer time PHONE CALL-LIKE vibration triggered for \(duration) seconds")
     }
@@ -178,33 +179,33 @@ class BackgroundTaskManager {
     // MARK: - Manual Vibration Control
     func startLongVibrationForPrayer(_ prayerType: PrayerType, duration: TimeInterval? = nil) {
         let vibrationDuration = duration ?? defaultVibrationDuration(for: prayerType)
-        hapticManager.triggerLongPrayerVibration(duration: vibrationDuration)
+       // hapticManager.triggerLongPrayerVibration(duration: vibrationDuration)
         print("Started manual long vibration for \(prayerType.displayName) - \(vibrationDuration) seconds")
     }
     
     func stopCurrentVibration() {
-        hapticManager.stopLongVibration()
+        //hapticManager.stopLongVibration()
         print("Stopped current vibration")
     }
     
     func testLongVibration(duration: TimeInterval = 30) {
-        hapticManager.startPhoneCallLikeVibration(duration: duration)
+        //hapticManager.startPhoneCallLikeVibration(duration: duration)
         print("Started phone call-like vibration for \(duration) seconds")
     }
     
     // MARK: - Strong Vibration Methods
     func startPhoneCallVibration(duration: TimeInterval = 30) {
-        hapticManager.startPhoneCallLikeVibration(duration: duration)
+        //hapticManager.startPhoneCallLikeVibration(duration: duration)
         print("Started phone call vibration for \(duration) seconds")
     }
     
     func startExtremeVibration(duration: TimeInterval = 30) {
-        hapticManager.startExtremeVibration(duration: duration)
+        //hapticManager.startExtremeVibration(duration: duration)
         print("Started EXTREME vibration for \(duration) seconds")
     }
     
     func startContinuousStrongVibration(duration: TimeInterval = 30) {
-        hapticManager.startContinuousStrongVibration(duration: duration)
+        //hapticManager.startContinuousStrongVibration(duration: duration)
         print("Started continuous strong vibration for \(duration) seconds")
     }
     
