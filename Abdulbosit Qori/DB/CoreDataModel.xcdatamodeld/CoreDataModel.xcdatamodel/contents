@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="NamazInfoCD" representedClassName="NamazInfoCD" syncable="YES">
+        <attribute name="asrTime" optional="YES" attributeType="String"/>
+        <attribute name="bomdodTime" optional="YES" attributeType="String"/>
+        <attribute name="day" optional="YES" attributeType="String"/>
+        <attribute name="dayName" optional="YES" attributeType="String"/>
+        <attribute name="nextDayBomdodTime" optional="YES" attributeType="String"/>
+        <attribute name="peshinTime" optional="YES" attributeType="String"/>
+        <attribute name="quyoshTime" optional="YES" attributeType="String"/>
+        <attribute name="shomTime" optional="YES" attributeType="String"/>
+        <attribute name="xuftonTime" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="QuranSurahs" representedClassName="QuranSurahs" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="file_name" optional="YES" attributeType="String"/>
+        <attribute name="file_url" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="pdf_url" optional="YES" attributeType="String"/>
+        <attribute name="place_type" optional="YES" attributeType="String"/>
+        <attribute name="verses_count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="RegionsCD" representedClassName="RegionsCD" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lan" optional="YES" attributeType="String"/>
+        <attribute name="lat" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Tasbehs" representedClassName="Tasbehs" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="file_name" optional="YES" attributeType="String"/>
+        <attribute name="file_url" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="pdf_url" optional="YES" attributeType="String"/>
+        <attribute name="place_type" optional="YES" attributeType="String"/>
+        <attribute name="verses_count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="VideoTutorials" representedClassName="VideoTutorials" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="file_name" optional="YES" attributeType="String"/>
+        <attribute name="file_url" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="pdf_url" optional="YES" attributeType="String"/>
+        <attribute name="place_type" optional="YES" attributeType="String"/>
+        <attribute name="verses_count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+</model>
