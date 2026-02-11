@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -78,6 +78,9 @@
 		AE947C8429C054970009331C /* SGSegmentedProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE947C8129C054970009331C /* SGSegmentedProgressView.swift */; };
 		AE947C8629C055570009331C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE947C8529C055570009331C /* Extensions.swift */; };
 		AECEE66F29EF16ED00FAE9C7 /* PrayerHederCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECEE66E29EF16ED00FAE9C7 /* PrayerHederCell.swift */; };
+		AED6012E2F3D024000806D74 /* PanModal in Frameworks */ = {isa = PBXBuildFile; productRef = AED6012D2F3D024000806D74 /* PanModal */; };
+		AED601302F3D05A900806D74 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED6012F2F3D05A900806D74 /* AppConstants.swift */; };
+		AED601322F3D060400806D74 /* PrayerTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED601312F3D060400806D74 /* PrayerTimeHelper.swift */; };
 		AEDB2ED629DEA34E00063E0D /* RosaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDB2ED529DEA34E00063E0D /* RosaryCell.swift */; };
 		AEED7FC429B3C1C400AE9C11 /* PrayerDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEED7FC329B3C1C400AE9C11 /* PrayerDetailVC.swift */; };
 		AEED7FC629B3C1D200AE9C11 /* PrayerDetailRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEED7FC529B3C1D200AE9C11 /* PrayerDetailRootView.swift */; };
@@ -212,6 +215,8 @@
 		AE947C8129C054970009331C /* SGSegmentedProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGSegmentedProgressView.swift; sourceTree = "<group>"; };
 		AE947C8529C055570009331C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AECEE66E29EF16ED00FAE9C7 /* PrayerHederCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerHederCell.swift; sourceTree = "<group>"; };
+		AED6012F2F3D05A900806D74 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		AED601312F3D060400806D74 /* PrayerTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeHelper.swift; sourceTree = "<group>"; };
 		AEDB2ED529DEA34E00063E0D /* RosaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosaryCell.swift; sourceTree = "<group>"; };
 		AEED7FC329B3C1C400AE9C11 /* PrayerDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDetailVC.swift; sourceTree = "<group>"; };
 		AEED7FC529B3C1D200AE9C11 /* PrayerDetailRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerDetailRootView.swift; sourceTree = "<group>"; };
@@ -284,6 +289,7 @@
 				AEF19E2D29B12C0200E789C5 /* SnapKit in Frameworks */,
 				CD3E673A2AADE8490027E08C /* FirebaseFirestore in Frameworks */,
 				CD3E673C2AADE8540027E08C /* FirebaseStorage in Frameworks */,
+				AED6012E2F3D024000806D74 /* PanModal in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +390,8 @@
 				AE947C7F29C054700009331C /* SGSegmentedProgress */,
 				AE7758B229B8FA2B0093B180 /* LoaderAnimation */,
 				AE472FCD29B30A7600F77483 /* XLPagerTabStrip */,
+				AED6012F2F3D05A900806D74 /* AppConstants.swift */,
+				AED601312F3D060400806D74 /* PrayerTimeHelper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -794,6 +802,7 @@
 				CD3E673B2AADE8540027E08C /* FirebaseStorage */,
 				CD556BB72D3E8D3800DA36B6 /* MyLibrary */,
 				49510CE72F33D4490009895A /* PanModal */,
+				AED6012D2F3D024000806D74 /* PanModal */,
 			);
 			productName = "Abdulbosit Qori";
 			productReference = AEF19DF929B1235500E789C5 /* Abdulbosit Qori.app */;
@@ -828,7 +837,7 @@
 				AEF19E2B29B12C0200E789C5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				AE57453C29E03D1C00DBB88B /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 				CD3E67382AADE62C0027E08C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				49510CE62F33D4490009895A /* XCLocalSwiftPackageReference "../../Desktop/exel/PanModal" */,
+				AED6012C2F3D024000806D74 /* XCRemoteSwiftPackageReference "PanModal" */,
 			);
 			productRefGroup = AEF19DFA29B1235500E789C5 /* Products */;
 			projectDirPath = "";
@@ -925,6 +934,7 @@
 				AE34DDBB29C395D700B52C18 /* MainTimeCell.swift in Sources */,
 				AE249B7929E5307300CE287B /* PrayerTimeControlVC.swift in Sources */,
 				AE40959A29B5F2DF008A530C /* Date.swift in Sources */,
+				AED601302F3D05A900806D74 /* AppConstants.swift in Sources */,
 				AE40959829B5CDA4008A530C /* ImpactGenerator.swift in Sources */,
 				AE472FE829B30AAB00F77483 /* PagerTabStripError.swift in Sources */,
 				AE472FF729B30CCF00F77483 /* QuranBribesVC.swift in Sources */,
@@ -988,6 +998,7 @@
 				AE472FE929B30AAB00F77483 /* ButtonBarPagerTabStripViewController.swift in Sources */,
 				AEF19DFD29B1235500E789C5 /* AppDelegate.swift in Sources */,
 				AE813AB229ED300D00F0DB56 /* SegmentedProgressBar.swift in Sources */,
+				AED601322F3D060400806D74 /* PrayerTimeHelper.swift in Sources */,
 				AEED7FCF29B3CC7200AE9C11 /* AboutRootView.swift in Sources */,
 				AE14196129B4767C00A2AB1E /* RosaryRootView.swift in Sources */,
 				AE472FE329B30AAB00F77483 /* ButtonBarView.swift in Sources */,
@@ -1243,13 +1254,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		49510CE62F33D4490009895A /* XCLocalSwiftPackageReference "../../Desktop/exel/PanModal" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../Desktop/exel/PanModal;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		AE57453C29E03D1C00DBB88B /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1257,6 +1261,14 @@
 			requirement = {
 				kind = exactVersion;
 				version = 2.0.0;
+			};
+		};
+		AED6012C2F3D024000806D74 /* XCRemoteSwiftPackageReference "PanModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/slackhq/PanModal.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.7;
 			};
 		};
 		AEF19E2B29B12C0200E789C5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1286,6 +1298,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AE57453C29E03D1C00DBB88B /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
 			productName = SwiftEntryKit;
+		};
+		AED6012D2F3D024000806D74 /* PanModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AED6012C2F3D024000806D74 /* XCRemoteSwiftPackageReference "PanModal" */;
+			productName = PanModal;
 		};
 		AEF19E2C29B12C0200E789C5 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

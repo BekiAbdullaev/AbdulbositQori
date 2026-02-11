@@ -2,10 +2,10 @@
 //  PrayerTimeHelper.swift
 //  Abdulbosit Qori
 //
-//  PrayerTimeVC va QiblaVC da takrorlangan namoz vaqti logikasini
-//  bitta joyga to'plash uchun yaratilgan helper.
+//  Created by Bekzod Abdullaev on 11/02/26.
 //
 
+import Foundation
 import Foundation
 import UIKit
 import MyLibrary
